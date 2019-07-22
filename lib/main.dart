@@ -114,16 +114,32 @@ class _MyHomePageState extends State<MyHomePage> {
                         Padding(
                           padding: EdgeInsets.only(left: 40),
                         ),
-                        CircleAvatar(
-                          radius: 110,
-                          backgroundColor: Color.fromRGBO(220, 220, 220, 1),
-                          child: CircleAvatar(
-                            backgroundColor: Colors.white,
-                            radius: 90,
-                            backgroundImage: AssetImage(
-                              'img/taylor.jpg',
+                        Stack(
+                          children: <Widget>[
+                            CircleAvatar(
+                              radius: 110,
+                              backgroundColor: Color.fromRGBO(220, 220, 220, 1),
+                              child: CircleAvatar(
+                                backgroundColor: Colors.white,
+                                radius: 90,
+                                backgroundImage: AssetImage(
+                                  'img/taylor.jpg',
+                                ),
+                              ),
                             ),
-                          ),
+                            Positioned(
+                              top: 160,
+                              right: 40,
+                              child: CircleAvatar(
+                                backgroundColor: Color.fromRGBO(242, 39, 90, 1),
+                                child: Icon(
+                                  Icons.favorite,
+                                  color: Colors.white,
+                                  size: 20,
+                                ),
+                              ),
+                            )
+                          ],
                         ),
                         Padding(
                           padding: EdgeInsets.only(right: 40),
@@ -289,22 +305,27 @@ class _MyHomePageState extends State<MyHomePage> {
             top: MediaQuery.of(context).size.height * 0.85 + 70,
             left: 20,
             right: 20,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Container(
-                  width: MediaQuery.of(context).size.width * 0.8,
-                  height: 5,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: Colors.black,
+            child: FittedBox(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Container(
+                    width: MediaQuery.of(context).size.width * 0.8,
+                    height: 5,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Colors.black,
+                    ),
                   ),
-                ),
-                Text(
-                  '-2:39',
-                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-                ),
-              ],
+                  Padding(
+                    padding: EdgeInsets.only(left: 5),
+                  ),
+                  Text(
+                    '-2:39',
+                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
             ),
           )
         ],
