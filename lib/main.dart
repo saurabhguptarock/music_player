@@ -3,109 +3,312 @@ import 'package:flutter/material.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
+  MyHomePage({Key key}) : super(key: key);
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
     return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
+      body: Stack(
+        children: <Widget>[
+          Container(
+            height: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width,
+            color: Color.fromRGBO(194, 211, 229, 1),
+          ),
+          Container(
+            height: MediaQuery.of(context).size.height * 0.85,
+            width: MediaQuery.of(context).size.width,
+            decoration: BoxDecoration(
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey,
+                  blurRadius: 50.0,
+                ),
+              ],
+              color: Colors.white,
+              borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(60),
+                  bottomRight: Radius.circular(60)),
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.display1,
+            child: Padding(
+              padding:
+                  EdgeInsets.only(top: MediaQuery.of(context).padding.top + 70),
+              child: Column(
+                children: <Widget>[
+                  FittedBox(
+                    child: Text(
+                      'NOW PLAYING',
+                      style: TextStyle(color: Colors.pink, fontSize: 16),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(top: 10),
+                  ),
+                  FittedBox(
+                    child: Text(
+                      'You Need To Calm Down',
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(top: 10),
+                  ),
+                  CircleAvatar(
+                    radius: 30,
+                    backgroundColor: Color.fromRGBO(240, 240, 240, 1),
+                    child: CircleAvatar(
+                      backgroundColor: Colors.white,
+                      radius: 20,
+                      backgroundImage: AssetImage(
+                        'img/taylor.jpg',
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(top: 10),
+                  ),
+                  FittedBox(
+                    child: Text(
+                      'Taylor Swift',
+                      style: TextStyle(
+                          color: Colors.grey, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(top: 15),
+                  ),
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: <Widget>[
+                        CircleAvatar(
+                          radius: 100,
+                          backgroundColor: Color.fromRGBO(250, 250, 250, 1),
+                          child: CircleAvatar(
+                            backgroundColor: Colors.white,
+                            radius: 85,
+                            backgroundImage: AssetImage(
+                              'img/taylor.jpg',
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(left: 40),
+                        ),
+                        CircleAvatar(
+                          radius: 110,
+                          backgroundColor: Color.fromRGBO(220, 220, 220, 1),
+                          child: CircleAvatar(
+                            backgroundColor: Colors.white,
+                            radius: 90,
+                            backgroundImage: AssetImage(
+                              'img/taylor.jpg',
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(right: 40),
+                        ),
+                        CircleAvatar(
+                          radius: 100,
+                          backgroundColor: Color.fromRGBO(250, 250, 250, 1),
+                          child: CircleAvatar(
+                            backgroundColor: Colors.white,
+                            radius: 85,
+                            backgroundImage: AssetImage(
+                              'img/taylor.jpg',
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(top: 15),
+                  ),
+                  FittedBox(
+                    child: Text(
+                      'LYRICS',
+                      style: TextStyle(
+                          color: Colors.grey, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(top: 10),
+                  ),
+                  Container(
+                    height: 100,
+                    child: SingleChildScrollView(
+                      scrollDirection: Axis.vertical,
+                      child: Column(
+                        children: <Widget>[
+                          FittedBox(
+                            child: Text(
+                              "You are somebody that I don't know",
+                              style: TextStyle(
+                                  color: Colors.grey,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15),
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(top: 5),
+                          ),
+                          FittedBox(
+                            child: Text(
+                              "But you're takin' shots at me like it's Patrón",
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 17),
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(top: 5),
+                          ),
+                          FittedBox(
+                            child: Text(
+                              "And I'm just like, damn, it's 7 AM",
+                              style: TextStyle(
+                                  color: Colors.grey,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15),
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(top: 5),
+                          ),
+                          FittedBox(
+                            child: Text(
+                              "Say it in the street, that's a knock-out",
+                              style: TextStyle(
+                                  color: Colors.grey,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15),
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(top: 5),
+                          ),
+                          FittedBox(
+                            child: Text(
+                              "But you say it in a Tweet, that's a cop-out",
+                              style: TextStyle(
+                                  color: Colors.grey,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15),
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(top: 5),
+                          ),
+                          FittedBox(
+                            child: Text(
+                              "And I'm just like, Hey, are you okay?",
+                              style: TextStyle(
+                                  color: Colors.grey,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ],
-        ),
+          ),
+          Positioned(
+            top: MediaQuery.of(context).padding.top + 20,
+            left: 10,
+            child: Icon(
+              Icons.chevron_left,
+              size: 40,
+            ),
+          ),
+          Positioned(
+            top: MediaQuery.of(context).size.height * 0.85 - 40,
+            left: MediaQuery.of(context).size.width * 0.5 - 40,
+            child: CircleAvatar(
+              backgroundColor: Colors.black,
+              child: Icon(
+                Icons.pause,
+                size: 45,
+                color: Colors.white,
+              ),
+              radius: 40,
+            ),
+          ),
+          Positioned(
+            top: MediaQuery.of(context).size.height * 0.85 - 20,
+            left: MediaQuery.of(context).size.width * 0.5 - 100,
+            child: CircleAvatar(
+              backgroundColor: Colors.black,
+              child: Icon(
+                Icons.skip_previous,
+                size: 25,
+                color: Colors.white,
+              ),
+              radius: 20,
+            ),
+          ),
+          Positioned(
+            top: MediaQuery.of(context).size.height * 0.85 - 20,
+            right: MediaQuery.of(context).size.width * 0.5 - 100,
+            child: CircleAvatar(
+              backgroundColor: Colors.black,
+              child: Icon(
+                Icons.skip_next,
+                size: 25,
+                color: Colors.white,
+              ),
+              radius: 20,
+            ),
+          ),
+          Positioned(
+            top: MediaQuery.of(context).size.height * 0.85 + 70,
+            left: 20,
+            right: 20,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Container(
+                  width: MediaQuery.of(context).size.width * 0.8,
+                  height: 5,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: Colors.black,
+                  ),
+                ),
+                Text(
+                  '-2:39',
+                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                ),
+              ],
+            ),
+          )
+        ],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
